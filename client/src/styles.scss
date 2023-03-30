@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+//@import "./node_modules/bootstrap/scss/bootstrap";
+
+$theme-colors: (
+  "primary":    #FAB95B,
+  "secondary":  #71A0A5,
+);
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+
+app-toast,
+.toast-class {
+  z-index: 9999;
+}
+
+

@@ -1,0 +1,88 @@
+<!--<div-->
+<!--  class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top"-->
+<!--&gt;-->
+<!--  <img-->
+<!--    src="/assets/images/logo.png"-->
+<!--    style="max-height: 55px"-->
+<!--    alt="logo"-->
+<!--    class="logo"-->
+<!--    routerLink="/"-->
+<!--  />-->
+<!--  <nav class="my-2 my-md-0 me-md-3 text-uppercase" style="font-size: larger">-->
+<!--    <a-->
+<!--      class="me-3 py-2"-->
+<!--      routerLink="/"-->
+<!--      routerLinkActive="active"-->
+<!--      [routerLinkActiveOptions]="{ exact: true }"-->
+<!--      >Home</a-->
+<!--    >-->
+<!--    <a class="me-3 py-2" routerLink="/category" routerLinkActive="active">Shop</a>-->
+<!--    <a class="me-3 py-2" routerLink="/test-error" routerLinkActive="active"-->
+<!--      >Errors</a-->
+<!--    >-->
+<!--  </nav>-->
+<!--  <div class="d-flex align-items-center">-->
+<!--    <a class="position-relative">-->
+<!--      <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>-->
+<!--      <div class="cart-no">5</div>-->
+<!--    </a>-->
+<!--    <a class="btn btn-outline-secondary me-2">Login</a>-->
+<!--    <a class="btn btn-outline-secondary me-3">Sign up</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" aria-label="Offcanvas navbar large">
+  <div class="container-fluid">
+    <img
+      src="/assets/images/logo.png"
+      style="max-height: 55px"
+      alt="logo"
+      class="logo"
+      routerLink="/"
+    />
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-light" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Offcanvas</h5>
+        <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav me-auto ms-5 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Menu
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/category" [queryParams]="{categoryId: 0}" routerLinkActive="active">All</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" [routerLink]="['/category']" [queryParams]="{categoryId: 1, categoryName: 'Politics'}" [replaceUrl]="true" routerLinkActive="active">Politics</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/category']" [queryParams]="{categoryId: 2, categoryName: 'Finances & economics'}" [replaceUrl]="true"  routerLinkActive="active">Finances & economics</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/category']" [queryParams]="{categoryId: 3, categoryName: 'Business'}" [replaceUrl]="true"  routerLinkActive="active">Business</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/category']" [queryParams]="{categoryId: 4, categoryName: 'Technology'}" [replaceUrl]="true"  routerLinkActive="active">Technology</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacts</a>
+          </li>
+        </ul>
+        <div class="navbar-nav">
+          <div class="d-flex align-items-center ">
+            <p class="mb-0 me-2">Kaunas <strong>5°C</strong></p>
+            <i class="fa fa-cloud fa-2x me-4 text-dark"></i>
+          </div>
+          <div>
+            <a class="btn btn-outline-secondary me-2">Login</a>
+            <a class="btn btn-outline-secondary me-2">Sign up</a>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+</nav>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row d-flex justify-content-center" *ngIf="article">
+    <div class="col-md-auto">
+      <img
+        src="{{ article.pictureUrl }}"
+        alt="{{ article.title }}"
+        class="img-fluid w-100 rounded"
+        style="max-width: 800px"
+      />
+      <div class="row">
+        <div class="row mb-1">
+
+        </div>
+        <div class="col-md-auto"><p class="fw-bold fs-6"> {{ article.articleCategory}}</p> <p class="text-black-50 fs-6">{{ article.date | date }}</p></div>
+      </div>
+      <div class="row">
+        <div class="col-md-auto">
+          <div style="max-width: 800px">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.text }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
