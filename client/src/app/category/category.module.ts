@@ -9,5 +9,6 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 @NgModule({
   declarations: [CategoryComponent, ArticleItemComponent, ArticleDetailsComponent],
   imports: [CommonModule, SharedModule, CategoryRoutingModule],
+  exports: [ArticleDetailsComponent, CategoryRoutingModule],
 })
 export class CategoryModule {}

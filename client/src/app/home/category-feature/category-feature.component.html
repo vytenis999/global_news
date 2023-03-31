@@ -1,0 +1,104 @@
+<div class="container section mt-4">
+  <div class="section-title">
+    <span>
+    <a [routerLink]="['/category']" [queryParams]="{categoryId: category.id, categoryName: category.name}">
+      {{this.category.name}}
+    </a>
+    </span>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+      <div class="card h-100">
+        <div class="mb-0 image image-xs">
+          <img class="thumb card-img-top" src="{{ articles[0]?.pictureUrl }}" alt="{{ articles[0]?.title }}">
+        </div>
+
+        <div class="card-body p-2">
+          <div class="row mb-1">
+            <div class="col-md-auto meta-info">
+              <p class="d-inline fw-bold fs-6 me-2">
+                <a [routerLink]="['/category']" [queryParams]="{categoryId: category.id, categoryName: category.name}">{{ articles[0]?.articleCategory }}</a>
+              </p>
+              <p class="d-inline text-black-50 fs-6">{{ articles[0]?.date | date }}</p>
+            </div>
+          </div>
+          <h6>
+            <a routerLink="/category/{{ articles[0]?.id }}">
+              {{ articles[0]?.title }}
+            </a>
+          </h6>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+      <div class="card h-100">
+        <div class="mb-0 image image-xs">
+          <img class="thumb card-img-top" src="{{ articles[1]?.pictureUrl }}" alt="{{ articles[1]?.title }}">
+        </div>
+
+        <div class="card-body p-2">
+          <div class="row mb-1">
+            <div class="col-md-auto meta-info">
+              <p class="d-inline fw-bold fs-6 me-2">
+                <a [routerLink]="['/category']" [queryParams]="{categoryId: category.id, categoryName: category.name}">{{ articles[1]?.articleCategory }}</a>
+              </p>
+              <p class="d-inline text-black-50 fs-6">{{ articles[1]?.date | date }}</p>
+            </div>
+          </div>
+          <h6>
+            <a routerLink="/category/{{ articles[1]?.id }}">
+              {{ articles[1]?.title }}
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+      <div class="card h-100">
+        <div class="mb-0 image image-xs">
+          <img class="thumb card-img-top" src="{{ articles[2]?.pictureUrl }}" alt="{{ articles[2]?.title }}">
+        </div>
+
+        <div class="card-body p-2">
+          <div class="row mb-1">
+            <div class="col-md-auto meta-info">
+              <p class="d-inline fw-bold fs-6 me-2">
+                <a [routerLink]="['/category']" [queryParams]="{categoryId: category.id, categoryName: category.name}">{{ articles[2]?.articleCategory }}</a>
+              </p>
+              <p class="d-inline text-black-50 fs-6">{{ articles[2]?.date | date }}</p>
+            </div>
+          </div>
+          <h6>
+            <a routerLink="/category/{{ articles[2]?.id }}">
+              {{ articles[2]?.title }}
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
+      <div class="card h-100">
+        <div class="mb-0 image image-xs">
+          <img class="thumb card-img-top" src="{{ articles[3]?.pictureUrl }}" alt="{{ articles[3]?.title }}">
+        </div>
+
+        <div class="card-body p-2">
+          <div class="row mb-1">
+            <div class="col-md-auto meta-info">
+              <p class="d-inline fw-bold fs-6 me-2">
+                <a [routerLink]="['/category']" [queryParams]="{categoryId: category.id, categoryName: category.name}">{{ articles[3]?.articleCategory }}</a>
+              </p>
+              <p class="d-inline text-black-50 fs-6">{{ articles[3]?.date | date }}</p>
+            </div>
+          </div>
+          <h6>
+            <a routerLink="/category/{{ articles[3]?.id }}">
+              {{ articles[3]?.title }}
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

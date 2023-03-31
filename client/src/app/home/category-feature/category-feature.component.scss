@@ -1,0 +1,26 @@
+.section-title{
+  position: relative;
+  margin-bottom: 20px;
+}
+.section-title span{
+  font-weight: 400;
+  font-size: 17px;
+  color: #212121;
+}
+.section-title span:after{
+  content: '';
+  position: absolute;
+  background: #212121;
+  width: 50px;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+}
+.section{
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.image{
+  overflow: hidden;
+}

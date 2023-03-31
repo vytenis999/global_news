@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+import {CategoryModule} from "./category/category.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
     HomeModule,
     SharedModule,
     BrowserAnimationsModule,
+    CategoryModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

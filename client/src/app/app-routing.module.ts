@@ -6,7 +6,7 @@ import { ServerErrorComponent } from './core/server-error/server-error.component
 import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, data: { breadcrumb: 'Home' } },
+  { path: '', component: HomeComponent},
   { path: 'test-error', component: TestErrorComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'not-found', component: NotFoundComponent },
@@ -14,7 +14,6 @@ const routes: Routes = [
     path: 'category',
     loadChildren: () =>
       import('./category/category.module').then((mod) => mod.CategoryModule),
-    data: { breadcrumb: { alias: 'category' } }
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

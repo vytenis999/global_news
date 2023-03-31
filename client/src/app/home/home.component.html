@@ -6,18 +6,23 @@
         <div class="image thumb position-relative mb-0" style="cursor: pointer">
           <img
             class="img-fluid bg-light card-img-top"
-            src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg"
-            alt=""
+            src="{{ articles[0]?.pictureUrl }}"
+            alt="{{ articles[0]?.title }}"
           />
         </div>
 
         <div class="card-body p-2">
           <div class="row mb-1">
-            <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
+            <div class="col-md-auto meta-info">
+              <p class="d-inline fw-bold fs-6 me-2">
+                <a [routerLink]="['/category']" [queryParams]="{categoryId: identifyCategoryId(articles[0]?.articleCategory), categoryName: articles[0]?.articleCategory}">{{ articles[0]?.articleCategory }}</a>
+              </p>
+              <p class="d-inline text-black-50 fs-6">{{ articles[0]?.date | date }}</p>
+            </div>
           </div>
           <h1 class="text-black">
-            <a class="text-decoration-none" routerLink="/category/">
-              Title
+            <a class="text-decoration-none" routerLink="/category/{{ articles[0]?.id }}">
+              {{ articles[0]?.title }}
             </a>
           </h1>
         </div>
@@ -31,18 +36,23 @@
             <div class="image position-relative mb-0" style="cursor: pointer">
               <img
                 class="img-fluid bg-light card-img-top"
-                src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg"
-                alt=""
+                src="{{ articles[1]?.pictureUrl }}"
+                alt="{{ articles[1]?.title }}"
               />
             </div>
 
             <div class="card-body p-2">
               <div class="row mb-1">
-                <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
+                <div class="col-md-auto meta-info">
+                  <p class="d-inline fw-bold fs-6 me-2">
+                    <a [routerLink]="['/category']" [queryParams]="{categoryId: identifyCategoryId(articles[1]?.articleCategory), categoryName: articles[1]?.articleCategory}">{{ articles[1]?.articleCategory }}</a>
+                  </p>
+                  <p class="d-inline text-black-50 fs-6">{{ articles[1]?.date | date }}</p>
+                </div>
               </div>
               <h5 class="text-black">
-              <a class="text-decoration-none" routerLink="/category/">
-               Title
+              <a class="text-decoration-none" routerLink="/category/{{ articles[1]?.id }}">
+                {{ articles[1]?.title }}
               </a>
               </h5>
             </div>
@@ -53,18 +63,23 @@
             <div class="image position-relative mb-0" style="cursor: pointer">
               <img
                 class="img-fluid bg-light card-img-top"
-                src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg"
-                alt=""
+                src="{{ articles[2]?.pictureUrl }}"
+                alt="{{ articles[2]?.title }}"
               />
             </div>
 
             <div class="card-body p-2">
               <div class="row mb-1">
-                <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
+                <div class="col-md-auto meta-info">
+                  <p class="d-inline fw-bold fs-6 me-2">
+                    <a [routerLink]="['/category']" [queryParams]="{categoryId: identifyCategoryId(articles[2]?.articleCategory), categoryName: articles[2]?.articleCategory}">{{ articles[2]?.articleCategory }}</a>
+                  </p>
+                  <p class="d-inline text-black-50 fs-6">{{ articles[2]?.date | date }}</p>
+                </div>
               </div>
               <h5 class="text-black">
-                <a class="text-decoration-none" routerLink="/category/">
-                  Title
+                <a class="text-decoration-none" routerLink="/category/{{ articles[2]?.id }}">
+                  {{ articles[2]?.title }}
                 </a>
               </h5>
             </div>
@@ -77,18 +92,23 @@
             <div class="image position-relative mb-0" style="cursor: pointer">
               <img
                 class="img-fluid bg-light card-img-top"
-                src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg"
-                alt=""
+                src="{{ articles[3]?.pictureUrl }}"
+                alt="{{ articles[3]?.title }}"
               />
             </div>
 
             <div class="card-body p-2">
               <div class="row mb-1">
-                <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
+                <div class="col-md-auto meta-info">
+                  <p class="d-inline fw-bold fs-6 me-2">
+                    <a [routerLink]="['/category']" [queryParams]="{categoryId: identifyCategoryId(articles[3]?.articleCategory), categoryName: articles[3]?.articleCategory}">{{ articles[3]?.articleCategory }}</a>
+                  </p>
+                  <p class="d-inline text-black-50 fs-6">{{ articles[3]?.date | date }}</p>
+                </div>
               </div>
               <h5 class="text-black">
-                <a class="text-decoration-none" routerLink="/category/">
-                  Title
+                <a class="text-decoration-none" routerLink="/category/{{ articles[3]?.id }}">
+                  {{ articles[3]?.title }}
                 </a>
               </h5>
             </div>
@@ -99,18 +119,23 @@
             <div class="image position-relative mb-0" style="cursor: pointer">
               <img
                 class="img-fluid bg-light card-img-top"
-                src="https://letzcricket.com/uploads/news/aU1BQdD1aezJIXUv.jpg"
-                alt=""
+                src="{{ articles[4]?.pictureUrl }}"
+                alt="{{ articles[4]?.title }}"
               />
             </div>
 
             <div class="card-body p-2">
               <div class="row mb-1">
-                <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
+                <div class="col-md-auto meta-info">
+                  <p class="d-inline fw-bold fs-6 me-2">
+                    <a [routerLink]="['/category']" [queryParams]="{categoryId: identifyCategoryId(articles[4]?.articleCategory), categoryName: articles[4]?.articleCategory}">{{ articles[4]?.articleCategory }}</a>
+                  </p>
+                  <p class="d-inline text-black-50 fs-6">{{ articles[4]?.date | date }}</p>
+                </div>
               </div>
               <h5 class="text-black">
-                <a class="text-decoration-none" routerLink="/category/">
-                  Title
+                <a class="text-decoration-none" routerLink="/category/{{ articles[4]?.id }}">
+                  {{ articles[4]?.title }}
                 </a>
               </h5>
             </div>
@@ -121,83 +146,8 @@
     </div>
   </div>
 </div>
-<div class="container section mt-4">
-  <div class="section-title">
-    <span>Analysis &amp; Prediction</span>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-      <div class="card">
-        <div class="mb-0 image image-xs">
-          <img class="thumb card-img-top" src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png">
-        </div>
-
-        <div class="card-body p-2">
-          <div class="row mb-1">
-            <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
-          </div>
-          <h6>
-            <a href="detail.html">
-              India vs England 4th T20 : Match Prediction, Probabale XI, Fantasy Picks
-            </a>
-          </h6>
-        </div>
-      </div>
-
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-      <div class="card">
-        <div class="mb-0 image image-xs">
-          <img class="thumb card-img-top" src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png">
-        </div>
-
-        <div class="card-body p-2">
-          <div class="row mb-1">
-            <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
-          </div>
-          <h6>
-            <a href="detail.html">
-              India vs England 4th T20 : Match Prediction, Probabale XI, Fantasy Picks
-            </a>
-          </h6>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-      <div class="card">
-        <div class="mb-0 image image-xs">
-          <img class="thumb card-img-top" src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png">
-        </div>
-
-        <div class="card-body p-2">
-          <div class="row mb-1">
-            <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
-          </div>
-          <h6>
-            <a href="detail.html">
-              India vs England 4th T20 : Match Prediction, Probabale XI, Fantasy Picks
-            </a>
-          </h6>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-      <div class="card">
-        <div class="mb-0 image image-xs">
-          <img class="thumb card-img-top" src="https://letzcricket.com/uploads/news/zXhIbjMmry4D2Sup.png">
-        </div>
-
-        <div class="card-body p-2">
-          <div class="row mb-1">
-            <div class="col-md-auto meta-info"><p class="d-inline fw-bold fs-6 me-2"> Category </p> <p class="d-inline text-black-50 fs-6">Date</p></div>
-          </div>
-          <h6>
-            <a href="detail.html">
-              India vs England 4th T20 : Match Prediction, Probabale XI, Fantasy Picks
-            </a>
-          </h6>
-        </div>
-      </div>
-    </div>
-  </div>
+<div *ngFor="let category of categories">
+    <app-category-feature [category]="category"></app-category-feature>
 </div>
+
+

@@ -6,14 +6,7 @@
 //  width: 100%;
 //}
 
-a{
-  color: #212121;
-  text-decoration: none;
-}
 
-a:hover{
-  color: #FAB95B;
-}
 .logo-wrapper{
   text-transform: uppercase;
   padding: 30px 0px;
@@ -73,24 +66,7 @@ a:hover{
   font-size: 0.9em!important;
   font-weight: 600!important;
 }
-.section-title{
-  position: relative;
-  margin-bottom: 20px;
-}
-.section-title span{
-  font-weight: 400;
-  font-size: 17px;
-  color: #212121;
-}
-.section-title span:after{
-  content: '';
-  position: absolute;
-  background: #212121;
-  width: 50px;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-}
+
 .bb-1{
   padding: 20px 0px;
   border-bottom: 1px solid #eee;
@@ -110,15 +86,8 @@ small{
   margin-bottom: 15px;
   border-bottom: 1px solid #eee;
 }
-.sticky{
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
+
 .no-pad{
   padding-left: 0px!important;
 }
 
-.meta-info p{
-  font-size: 12px !important;
-}
