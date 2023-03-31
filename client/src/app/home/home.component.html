@@ -8,6 +8,7 @@
             class="img-fluid bg-light card-img-top"
             src="{{ articles[0]?.pictureUrl }}"
             alt="{{ articles[0]?.title }}"
+            routerLink="/category/{{ articles[0]?.id }}"
           />
         </div>
 
@@ -38,6 +39,7 @@
                 class="img-fluid bg-light card-img-top"
                 src="{{ articles[1]?.pictureUrl }}"
                 alt="{{ articles[1]?.title }}"
+                routerLink="/category/{{ articles[1]?.id }}"
               />
             </div>
 
@@ -65,6 +67,7 @@
                 class="img-fluid bg-light card-img-top"
                 src="{{ articles[2]?.pictureUrl }}"
                 alt="{{ articles[2]?.title }}"
+                routerLink="/category/{{ articles[2]?.id }}"
               />
             </div>
 
@@ -94,6 +97,7 @@
                 class="img-fluid bg-light card-img-top"
                 src="{{ articles[3]?.pictureUrl }}"
                 alt="{{ articles[3]?.title }}"
+                routerLink="/category/{{ articles[3]?.id }}"
               />
             </div>
 
@@ -121,6 +125,7 @@
                 class="img-fluid bg-light card-img-top"
                 src="{{ articles[4]?.pictureUrl }}"
                 alt="{{ articles[4]?.title }}"
+                routerLink="/category/{{ articles[4]?.id }}"
               />
             </div>
 
@@ -146,7 +151,7 @@
     </div>
   </div>
 </div>
-<div *ngFor="let category of categories">
+<div class="mb-5" *ngFor="let category of categories">
     <app-category-feature [category]="category"></app-category-feature>
 </div>
 
