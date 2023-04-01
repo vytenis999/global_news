@@ -16,8 +16,10 @@
         <p class="d-inline text-black-50 fs-6">{{ article.date | date }}</p>
       </div>
     </div>
+    <h5 class="text-black">
     <a class="text-decoration-none" routerLink="/category/{{ article.id }}">
-      <h5 class="text-black">{{ article.title }}</h5>
+      {{ article.title }}
     </a>
+    </h5>
   </div>
 </div>
