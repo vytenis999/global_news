@@ -11,9 +11,11 @@ import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import {CategoryModule} from "./category/category.module";
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AboutUsComponent, ContactComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
