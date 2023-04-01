@@ -18,11 +18,11 @@
         <h3>Lorem Ipsum</h3>
         <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quaerat autem corrupti asperiores accusantium et fuga! Facere excepturi, quo eos, nobis doloremque dolor labore expedita illum iusto, aut repellat fuga!</p>
         <ul class="list-unstyled pl-md-5 mb-5">
-          <li class="d-flex text-black mb-2">
+          <li class="d-flex text-black my-3">
             <span class="mr-3"><i class="fa fa-address-book fa-2x me-4 text-dark"></i></span> 34 Street Name, City Name Here, <br> United States
           </li>
-          <li class="d-flex text-black mb-2"><span class="mr-3"><i class="fa fa-phone fa-2x me-4 text-dark"></i></span> +1 (222) 345 6789</li>
-          <li class="d-flex text-black"><span class="mr-3"><i class="fa fa-envelope fa-2x me-4 text-dark"></i></span> info@globalnews.com </li>
+          <li class="d-flex text-black my-3"><span class="mr-3"><i class="fa fa-phone fa-2x me-4 text-dark"></i></span> +1 (222) 345 6789</li>
+          <li class="d-flex text-black my-3"><span class="mr-3"><i class="fa fa-envelope fa-2x me-4 text-dark"></i></span> info@globalnews.com </li>
         </ul>
       </div>
       <div class="col-md-6 px-5 mx-auto">
@@ -32,7 +32,7 @@
               <label for="name" class="col-form-label">Name</label>
               <input [ngClass]="{'is-invalid':submitted && contactForm.controls.name.errors}" formControlName="name" type="text" id="name" class="form-control">
               <div *ngIf="submitted && contactForm.controls.name.errors" class="text-danger">
-                <div *ngIf="contactForm.controls.name.errors.required">Name is required.</div>
+                <div *ngIf="contactForm.controls.name.errors.required">Name is required!</div>
               </div>
             </div>
           </div>
@@ -41,8 +41,8 @@
               <label for="email" class="col-form-label">Email</label>
               <input [ngClass]="{'is-invalid':submitted && contactForm.controls.email.errors}" formControlName="email" type="email" id="email" class="form-control">
               <div *ngIf="submitted && contactForm.controls.email.errors" class="text-danger">
-                <div *ngIf="submitted && contactForm.controls.email.errors.required">Email is required.</div>
-                <div *ngIf="submitted && contactForm.get('email').errors.email">Invalid email address.</div>
+                <div *ngIf="submitted && contactForm.controls.email.errors.required">Email is required!</div>
+                <div *ngIf="submitted && contactForm.get('email').errors.email">Invalid email address!</div>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
               <label for="message" class="col-form-label">Message</label>
               <textarea [ngClass]="{'is-invalid':submitted && contactForm.controls.email.errors}" formControlName="message" class="form-control" id="message" cols="30" rows="7" spellcheck="false" data-ms-editor="true"></textarea>
               <div *ngIf="submitted && contactForm.controls.message.errors" class="text-danger">
-                <div *ngIf="submitted && contactForm.controls.message.errors.required">Message is required.</div>
+                <div *ngIf="submitted && contactForm.controls.message.errors.required">Message is required!</div>
               </div>
             </div>
           </div>
