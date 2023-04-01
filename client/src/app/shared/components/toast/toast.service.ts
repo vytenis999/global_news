@@ -22,9 +22,6 @@ export class ToastService {
   public open = new Subject<ToastData>();
 
   initiate(data: ToastData) {
-    if (data.type) {
-      this.data.type = toastTypes.error;
-    }
     this.data = { ...data, show: true, progressWidth: '100%' };
     this.open.next(this.data);
   }
