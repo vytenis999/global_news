@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./category/category.module').then((mod) => mod.CategoryModule),
   },
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('./account/account.module').then((mod) => mod.AccountModule),
+  },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

@@ -13,7 +13,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import {CategoryModule} from "./category/category.module";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
-import  {  FormsModule,  ReactiveFormsModule  }  from  '@angular/forms';
+import  {  FormsModule}  from  '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, AboutUsComponent, ContactComponent],
@@ -27,7 +27,6 @@ import  {  FormsModule,  ReactiveFormsModule  }  from  '@angular/forms';
     BrowserAnimationsModule,
     CategoryModule,
     FormsModule,
-    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
