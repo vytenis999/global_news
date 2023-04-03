@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactComponent {
   contactForm: FormGroup;
-  submitted=false
+  submitted = false;
 
   constructor(private fb: FormBuilder, private toast: ToastService) { }
 
@@ -22,7 +22,7 @@ export class ContactComponent {
   }
 
   onSubmit() {
-    this.submitted = true
+    this.submitted = true;
 
     if(this.contactForm.invalid){
       return

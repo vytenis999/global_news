@@ -1,1 +1,46 @@
-<p>register works!</p>
+<section class="first-section vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="text-center mb-4">
+            <h1 class="mb-3">Register</h1>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{'is-invalid':submitted && registerForm.controls.displayName.errors}" type="text" formControlName="displayName" class="form-control" id="floatingName" placeholder="Name">
+            <label for="floatingName">Name</label>
+            <div *ngIf="submitted && registerForm.controls.displayName.errors" class="invalid-feedback">
+              <div *ngIf="submitted && registerForm.controls.displayName.errors.required">Name is required!</div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{'is-invalid':submitted && registerForm.controls.email.errors}" type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="Email">
+            <label for="floatingInput">Email address</label>
+            <div *ngIf="submitted && registerForm.controls.email.errors" class="invalid-feedback">
+              <div *ngIf="submitted && registerForm.controls.email.errors.required">Email is required!</div>
+              <div *ngIf="submitted && registerForm.get('email').errors.email">Invalid email address!</div>
+            </div>
+          </div>
+          <div class="form-floating">
+            <input [ngClass]="{'is-invalid':submitted && registerForm.controls.password.errors}" type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+            <div *ngIf="submitted && registerForm.controls.password.errors" class="invalid-feedback">
+              <div *ngIf="submitted && registerForm.controls.password.errors.required">Password is required!</div>
+              <div *ngIf="submitted && registerForm.controls.password.errors?.['pattern']">Password not complex enough</div>
+            </div>
+            <ul class="text-danger list-unstyled" *ngIf="errors">
+              <li *ngFor="let error of errors">
+                {{error}}
+              </li>
+            </ul>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-lg btn-primary mt-3" type="submit">
+              Sign up
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
