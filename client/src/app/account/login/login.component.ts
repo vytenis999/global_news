@@ -23,7 +23,7 @@ export class LoginComponent {
   onSubmit() {
     this.submitted = true;
 
-    if (this.loginForm.value.email != null && this.loginForm.value.password != null)
+    if (!this.loginForm.invalid && this.loginForm.value.email != null && this.loginForm.value.password != null)
     this.accountService.login(this.loginForm.value).subscribe({
       next: user => this.router.navigateByUrl('/articles-manager')
     })

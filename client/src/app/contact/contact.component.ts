@@ -23,16 +23,15 @@ export class ContactComponent {
 
   onSubmit() {
     this.submitted = true;
-
-    if(this.contactForm.invalid){
-      return
+    
+    if (!this.contactForm.invalid) {
+      console.log('Your form data : ', this.contactForm.value);
+      this.toast.initiate({
+        title: `Success`,
+        content: `Message has been sent`,
+        type: 1,
+      });
     }
-    console.log('Your form data : ', this.contactForm.value );
-    this.toast.initiate({
-      title: `Success`,
-      content: `Message has been sent`,
-      type: 1,
-    });
   }
 
 }

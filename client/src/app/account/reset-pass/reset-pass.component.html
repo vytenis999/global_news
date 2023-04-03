@@ -1,0 +1,33 @@
+<section class="first-section vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
+          <div class="text-center mb-4">
+            <h1 class="mb-3">Create new password</h1>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{'is-invalid':submitted && resetForm.controls.password.errors}" type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+            <div *ngIf="submitted && resetForm.controls.password.errors" class="invalid-feedback">
+              <div *ngIf="submitted && resetForm.controls.password.errors.required">Password is required!</div>
+            </div>
+          </div>
+          <div class="form-floating">
+            <input [ngClass]="{'is-invalid':submitted && resetForm.controls.confirmPassword.errors}" type="password" formControlName="confirmPassword" class="form-control" id="floatingPasswordConfirmation" placeholder="Confirm password">
+            <label for="floatingPasswordConfirmation">Confirm password</label>
+            <div *ngIf="submitted && resetForm.controls.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="submitted && resetForm.controls.confirmPassword.errors.required">Password confirmation is required!</div>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-lg btn-primary mt-3" type="submit">
+              Confirm
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -90,8 +90,8 @@
                 </button>
                 <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
                     role="menu" aria-labelledby="button-basic">
-                  <li role="menuitem"><a class="dropdown-item" routerLink="/articles-manager">Articles manager</a></li>
-                  <li role="menuitem"><a class="dropdown-item" href="#">Add article</a></li>
+                  <li role="menuitem"><a class="dropdown-item" routerLink="/articles-manager" routerLinkActive="active">Articles manager</a></li>
+                  <li role="menuitem"><a class="dropdown-item" routerLink="/articles-manager/article" routerLinkActive="active">Add article</a></li>
                   <li class="divider dropdown-divider"></li>
                   <li role="menuitem"><a class="dropdown-item" style="cursor: pointer"  (click)="accountService.logout()">Logout</a>
                   </li>

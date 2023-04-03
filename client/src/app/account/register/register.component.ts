@@ -25,10 +25,11 @@ export class RegisterComponent {
 
   onSubmit(){
     this.submitted = true;
-
-    this.accountService.register(this.registerForm.value).subscribe({
-      next: () => this.router.navigateByUrl('/articles-manager'),
-      error: error => this.errors = error.errors
-    })
+    if (!this.registerForm.invalid){
+      this.accountService.register(this.registerForm.value).subscribe({
+        next: () => this.router.navigateByUrl('/articles-manager'),
+        error: error => this.errors = error.errors
+      })
+    }
   }
 }

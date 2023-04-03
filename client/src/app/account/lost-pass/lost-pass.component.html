@@ -1,0 +1,28 @@
+<section class="first-section vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <form [formGroup]="lostForm" (ngSubmit)="onSubmit()">
+          <div class="text-center mb-4">
+            <h1 class="mb-3">Reset your password</h1>
+            <p>Enter your email for instructions on resetting your password.</p>
+          </div>
+          <div class="form-floating mb-3">
+            <input [ngClass]="{'is-invalid':submitted && lostForm.controls.email.errors}" type="email" formControlName="email" class="form-control" id="floatingInput" placeholder="Email">
+            <label for="floatingInput">Email address</label>
+            <div *ngIf="submitted && lostForm.controls.email.errors" class="invalid-feedback">
+              <div *ngIf="submitted && lostForm.controls.email.errors.required">Email is required!</div>
+              <div *ngIf="submitted && lostForm.get('email').errors.email">Invalid email address!</div>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-lg btn-primary mt-3" type="submit" >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
