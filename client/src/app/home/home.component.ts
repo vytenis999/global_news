@@ -45,7 +45,7 @@ export class HomeComponent {
   }
 
   identifyCategoryId(categoryName: string){
-    const pos = this.categories.map(e => e.name).indexOf(categoryName);
+    const pos = this.categories?.map(e => e.name).indexOf(categoryName);
     return pos + 1;
   }
 

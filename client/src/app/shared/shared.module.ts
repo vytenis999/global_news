@@ -7,10 +7,11 @@ import { ToastComponent } from './components/toast/toast.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {ReactiveFormsModule} from "@angular/forms";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [PagingHeaderComponent, PagerComponent, ToastComponent],
-  imports: [CommonModule, PaginationModule.forRoot(), CarouselModule.forRoot(), ReactiveFormsModule,BsDropdownModule.forRoot()],
+  imports: [CommonModule, PaginationModule.forRoot(), CarouselModule.forRoot(), ReactiveFormsModule,BsDropdownModule.forRoot(), BsDatepickerModule.forRoot()],
   exports: [
     PaginationModule,
     PagingHeaderComponent,
@@ -18,7 +19,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ToastComponent,
     CarouselModule,
     ReactiveFormsModule,
-    BsDropdownModule
+    BsDropdownModule,
+    BsDatepickerModule
   ],
 })
 export class SharedModule {}

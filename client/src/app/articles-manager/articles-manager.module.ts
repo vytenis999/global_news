@@ -4,6 +4,7 @@ import { AddEditArticleComponent } from './add-edit-article/add-edit-article.com
 import { ArticlesManagerComponent } from './articles-manager.component';
 import {ArticlesManagerRoutingModule} from "./articles-manager-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import {CategoryModule} from "../category/category.module";
 
 
 
@@ -15,7 +16,9 @@ import {SharedModule} from "../shared/shared.module";
   imports: [
     CommonModule,
     ArticlesManagerRoutingModule,
-    SharedModule
-  ]
+    SharedModule,
+    CategoryModule
+  ],
+  exports: [ArticlesManagerRoutingModule],
 })
 export class ArticlesManagerModule { }

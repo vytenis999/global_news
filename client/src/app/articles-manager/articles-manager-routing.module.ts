@@ -6,8 +6,7 @@ import {AddEditArticleComponent} from "./add-edit-article/add-edit-article.compo
 
 const routes: Routes = [
   {path : '', component: ArticlesManagerComponent},
-  {path : 'add', component: AddEditArticleComponent},
-  {path : 'edit/:id', component: AddEditArticleComponent},
+  {path : 'article', component: AddEditArticleComponent},
 ]
 
 @NgModule({
