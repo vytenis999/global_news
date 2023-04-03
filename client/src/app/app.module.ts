@@ -15,6 +15,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import  {  FormsModule}  from  '@angular/forms';
 
+
 @NgModule({
   declarations: [AppComponent, AboutUsComponent, ContactComponent],
   imports: [

@@ -23,7 +23,7 @@ export class ContactComponent {
 
   onSubmit() {
     this.submitted = true;
-    
+
     if (!this.contactForm.invalid) {
       console.log('Your form data : ', this.contactForm.value);
       this.toast.initiate({

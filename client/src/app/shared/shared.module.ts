@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+
 @NgModule({
   declarations: [PagingHeaderComponent, PagerComponent, ToastComponent],
   imports: [CommonModule, PaginationModule.forRoot(), CarouselModule.forRoot(), ReactiveFormsModule,BsDropdownModule.forRoot(), BsDatepickerModule.forRoot()],
@@ -20,7 +21,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     CarouselModule,
     ReactiveFormsModule,
     BsDropdownModule,
-    BsDatepickerModule
+    BsDatepickerModule,
   ],
 })
 export class SharedModule {}

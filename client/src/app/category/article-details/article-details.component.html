@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row min-vh-100 d-flex justify-content-center" *ngIf="article">
+  <div class="row d-flex justify-content-center" *ngIf="article">
     <div class="col-md-auto">
       <img
         src="{{ article.pictureUrl }}"
@@ -21,7 +21,11 @@
           </div>
         </div>
       </div>
+      <div class="row mx-auto my-4">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
+      </div>
     </div>
+
   </div>
 
 </div>
