@@ -14,7 +14,7 @@ import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
 })
 export class ArticleDetailsComponent {
   article: IArticle;
-
+  Urls : string[];
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
@@ -22,19 +22,28 @@ export class ArticleDetailsComponent {
     private newsService: CategoryService,
     private activatedRoute: ActivatedRoute,
     private bcService: BreadcrumbService
-  ) {
-    this.bcService.set('@articleDetails', ' ');
-  }
+  ) {}
 
   ngOnInit() {
     this.loadArticle();
+  }
 
-      for (let i = 0; i < this.article?.GalleryUrls?.length; i++){
-        const image = this.galleryImages[i];
-        image.small = this.article.GalleryUrls![i];
-        image.medium = this.article.GalleryUrls![i];
-        image.big = this.article.GalleryUrls![i];
-      }
+  loadArticle() {
+    this.newsService
+      .getArticle(+this.activatedRoute.snapshot.paramMap.get('id'))
+      .subscribe({
+        next: (article) => {
+          this.article = article;
+          this.Urls = this.article.galleryUrls;
+          this.printing();
+        },
+        error: (e) => console.log(e),
+        complete: () => console.info('complete'),
+      });
+  }
+
+  printing(){
+    console.log(this.Urls)
 
     this.galleryOptions = [
       {
@@ -59,44 +68,11 @@ export class ArticleDetailsComponent {
         preview: false
       }
     ];
-    /*
-    this.galleryImages = [
-      {
-        small: 'assets/images/gallery/1-medium.jpg',
-        medium: 'assets/images/gallery/1-medium.jpg',
-        big: 'assets/images/gallery/1-medium.jpg'
-      },
-      {
-        small: 'assets/images/gallery/2-medium.jpg',
-        medium: 'assets/images/gallery/2-medium.jpg',
-        big: 'assets/images/gallery/2-medium.jpg'
-      },
-      {
-        small: 'assets/images/gallery/3-medium.jpg',
-        medium: 'assets/images/gallery/3-medium.jpg',
-        big: 'assets/images/gallery/3-medium.jpg'
-      },{
-        small: 'assets/images/gallery/4-medium.jpg',
-        medium: 'assets/images/gallery/4-medium.jpg',
-        big: 'assets/images/gallery/4-medium.jpg'
-      },
-      {
-        small: 'assets/images/gallery/5-medium.jpg',
-        medium: 'assets/images/gallery/5-medium.jpg',
-        big: 'assets/images/gallery/5-medium.jpg'
-      }
-    ];*/
-  }
 
-  loadArticle() {
-    this.newsService
-      .getArticle(+this.activatedRoute.snapshot.paramMap.get('id'))
-      .subscribe({
-        next: (article) => {
-          this.article = article;
-        },
-        error: (e) => console.log(e),
-        complete: () => console.info('complete'),
-      });
+    this.galleryImages = [];
+
+    for (let i = 0; i < this.article?.galleryUrls?.length; i++){
+      this.galleryImages.push({small: this.article.galleryUrls![i], medium: this.article.galleryUrls![i], big : this.article.galleryUrls![i]})
+    }
   }
 }
