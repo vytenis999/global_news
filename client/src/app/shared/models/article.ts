@@ -5,5 +5,6 @@ export interface IArticle {
   description: string;
   text: string;
   pictureUrl: string;
+  GalleryUrls: string[];
   articleCategory: string;
 }

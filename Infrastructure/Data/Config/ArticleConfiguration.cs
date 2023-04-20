@@ -14,6 +14,7 @@ namespace Infrastructure.Data.Config
             builder.Property(p => p.Text).IsRequired().HasMaxLength(2000);
             builder.Property(p => p.Date).HasColumnType("date");
             builder.Property(p => p.PictureUrl).IsRequired();
+            builder.Property(p => p.GalleryUrls).IsRequired();
             builder.HasOne(b => b.ArticleCategory).WithMany()
                 .HasForeignKey(p => p.ArticleCategoryId);
         }

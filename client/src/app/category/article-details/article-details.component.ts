@@ -29,6 +29,13 @@ export class ArticleDetailsComponent {
   ngOnInit() {
     this.loadArticle();
 
+      for (let i = 0; i < this.article?.GalleryUrls?.length; i++){
+        const image = this.galleryImages[i];
+        image.small = this.article.GalleryUrls![i];
+        image.medium = this.article.GalleryUrls![i];
+        image.big = this.article.GalleryUrls![i];
+      }
+
     this.galleryOptions = [
       {
         width: '800px',
@@ -52,7 +59,7 @@ export class ArticleDetailsComponent {
         preview: false
       }
     ];
-
+    /*
     this.galleryImages = [
       {
         small: 'assets/images/gallery/1-medium.jpg',
@@ -78,10 +85,8 @@ export class ArticleDetailsComponent {
         medium: 'assets/images/gallery/5-medium.jpg',
         big: 'assets/images/gallery/5-medium.jpg'
       }
-    ];
+    ];*/
   }
-
-
 
   loadArticle() {
     this.newsService
@@ -89,7 +94,6 @@ export class ArticleDetailsComponent {
       .subscribe({
         next: (article) => {
           this.article = article;
-          this.bcService.set('@articleDetails', article.title);
         },
         error: (e) => console.log(e),
         complete: () => console.info('complete'),

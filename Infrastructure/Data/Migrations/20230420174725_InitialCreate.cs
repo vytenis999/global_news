@@ -31,6 +31,7 @@ namespace Infrastructure.Data.Migrations
                     Description = table.Column<string>(maxLength: 180, nullable: false),
                     Text = table.Column<string>(maxLength: 2000, nullable: false),
                     PictureUrl = table.Column<string>(nullable: false),
+                    GalleryUrls = table.Column<string>(nullable: false),
                     ArticleCategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

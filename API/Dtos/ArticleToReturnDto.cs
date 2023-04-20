@@ -13,6 +13,7 @@ namespace API.Dtos
         public string Description { get; set; }
         public string Text { get; set; }
         public string PictureUrl { get; set; }
+        public string[] GalleryUrls { get; set; }
         public string ArticleCategory { get; set; }
     }
 }

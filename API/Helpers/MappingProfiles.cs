@@ -14,7 +14,8 @@ namespace API.Helpers
         {
             CreateMap<Article, ArticleToReturnDto>()
                 .ForMember(d => d.ArticleCategory, o => o.MapFrom(s => s.ArticleCategory.Name))
-                .ForMember(d => d.PictureUrl, o => o.MapFrom<ArticleUrlResolver>());
+                .ForMember(d => d.PictureUrl, o => o.MapFrom<ArticleUrlResolver>())
+                .ForMember(d => d.GalleryUrls, o => o.MapFrom<ArticleGalleryUrlsResolver>());
         }
     }
 }
