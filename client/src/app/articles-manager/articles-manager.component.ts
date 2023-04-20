@@ -53,9 +53,15 @@ export class ArticlesManagerComponent {
   }
 
   onCategorySelected(categoryId: number) {
-    this.newsParams.categoryId = categoryId;
-    this.newsParams.pageNumber = 1;
-    this.getArticles();
+    if(categoryId == 0){
+      this.newsParams = new NewsParams();
+      this.getArticles();
+    }else {
+      this.newsParams.categoryId = categoryId;
+      this.newsParams.pageNumber = 1;
+      this.getArticles();
+    }
+
   }
 
   onSortSelected(sort: string) {
