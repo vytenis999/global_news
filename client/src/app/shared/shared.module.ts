@@ -8,10 +8,11 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import {ReactiveFormsModule} from "@angular/forms";
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
 
 
 @NgModule({
-  declarations: [PagingHeaderComponent, PagerComponent, ToastComponent],
+  declarations: [PagingHeaderComponent, PagerComponent, ToastComponent, WeatherWidgetComponent],
   imports: [CommonModule, PaginationModule.forRoot(), CarouselModule.forRoot(), ReactiveFormsModule,BsDropdownModule.forRoot(), BsDatepickerModule.forRoot()],
   exports: [
     PaginationModule,
@@ -22,6 +23,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ReactiveFormsModule,
     BsDropdownModule,
     BsDatepickerModule,
+    WeatherWidgetComponent,
   ],
 })
 export class SharedModule {}

@@ -72,11 +72,8 @@
             <a class="nav-link" [routerLink]="['/contact']" routerLinkActive="active">Contacts</a>
           </li>
         </ul>
-        <div class="navbar-nav">
-                    <div class="d-flex align-items-center ">
-                      <p class="mb-0 me-2">Kaunas <strong>5°C</strong></p>
-                      <i class="fa fa-cloud fa-2x me-4 text-dark"></i>
-                    </div>
+        <div class="navbar-nav align-items-center">
+          <app-weather-widget></app-weather-widget>
           <div>
             <ng-container *ngIf="(accountService.currentUser$ | async) === null">
             <a class="btn btn-outline-secondary me-2" routerLink="/account/login">Login</a>
