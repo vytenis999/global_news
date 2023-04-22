@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../../category/category.service";
 import {ActivatedRoute} from "@angular/router";
 import {ToastService} from "../../shared/components/toast/toast.service";
+import {FileHandle, FilesSent} from "../../shared/models/file-handle";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-add-article',
@@ -18,9 +20,11 @@ export class AddArticleComponent {
   submitted = false;
   id?: number;
   formattedDate: any;
+  filesSent: FilesSent;
 
+  selectedFiles: File[] = [];
 
-  constructor(private newsService: CategoryService, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private toast: ToastService) {}
+  constructor(private sanitizer: DomSanitizer,private newsService: CategoryService, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private toast: ToastService) {}
 
   ngOnInit() {
     this.getCategories();
@@ -61,13 +65,16 @@ export class AddArticleComponent {
       return
     }
 
+    console.log(this.selectedFiles);
+    this.uploadImages();
+
     const newArticle: IArticleAdd = {
       date: new Date(this.articleForm.value.date),
       title: this.articleForm.value.title,
       description: this.articleForm.value.description,
       text: this.articleForm.value.text,
-      pictureUrl: 'string.png',
-      galleryUrls: ['string.png'],
+      pictureUrl: this.selectedFiles[0].name,
+      galleryUrls: this.selectedFiles.map(file => file.name),
       articleCategoryId: this.articleForm.value.articleCategory
     };
 
@@ -84,9 +91,55 @@ export class AddArticleComponent {
       error: (e) => console.log(e),
       complete: () => console.info('complete'),
     });
-
     //console.log('Your form data : ', newArticle);
-
   }
 
+  onFileSelect(event): void {
+    if(event.target.files) {
+      const file = event.target.files[0];
+
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        )
+      }
+
+      this.selectedFiles.push(fileHandle.file);
+    }
+  }
+
+  uploadImages(): void {
+    const formData = new FormData();
+    for (const file of this.selectedFiles) {
+      formData.append('files', file);
+    }
+    this.newsService.postImages(formData).subscribe({
+      next: () => {
+        this.toast.initiate({
+          title: `Success`,
+          content: `Saved`,
+          type: 1,
+        });
+      },
+      error: (e) => console.log(e),
+      complete: () => console.info('complete upload'),
+    });
+  }
+
+  /*
+  onFileSelected(event){
+    if(event.target.files){
+      const file = event.target.files[0];
+
+      const fileHandle: FileHandle = {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        )
+      }
+
+      this.filesSent?.articlesImages?.push(fileHandle);
+    }
+  }*/
 }

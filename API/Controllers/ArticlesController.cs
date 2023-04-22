@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Dtos;
@@ -10,9 +11,12 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -22,13 +26,17 @@ namespace API.Controllers
         private readonly IGenericRepository<ArticleCategory> _articleCategoryRepo;
         private readonly IMapper _mapper;
         private readonly IArticleRepository _articleRepository;
+        private readonly IWebHostEnvironment _env;
+        private readonly string[] allowedExtensions = { ".jpg", ".jpeg", ".png" };
+        private readonly string uploadPath = @"../API/wwwroot/images/articles";
 
-        public ArticlesController(IGenericRepository<Article> articlesRepo, IGenericRepository<ArticleCategory> articleCategoryRepo, IMapper mapper, IArticleRepository articleRepository)
+        public ArticlesController(IGenericRepository<Article> articlesRepo, IGenericRepository<ArticleCategory> articleCategoryRepo, IMapper mapper, IArticleRepository articleRepository, IWebHostEnvironment env)
         {
             _mapper = mapper;
             _articleCategoryRepo = articleCategoryRepo;
             _articlesRepo = articlesRepo;
             _articleRepository = articleRepository;
+            _env = env;
         }
 
         [HttpGet]
@@ -93,6 +101,28 @@ namespace API.Controllers
             await _articleRepository.PostArticleAsync(article);
 
             return Ok();
+        }
+
+        [HttpPost("uploadimages")]
+        public async Task<IActionResult> UploadImages(IFormFileCollection files)
+        {
+            var result = new List<string>();
+            foreach (var file in files)
+            {
+                var extension = Path.GetExtension(file.FileName).ToLower();
+                if (!allowedExtensions.Contains(extension))
+                {
+                    continue;
+                }
+                var fileName = file.FileName;
+                var filePath = Path.Combine(uploadPath, fileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+                result.Add(fileName);
+            }
+            return Ok(result);
         }
 
         [HttpDelete("deletearticle")]

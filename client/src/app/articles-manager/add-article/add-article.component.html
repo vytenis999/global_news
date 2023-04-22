@@ -1,15 +1,10 @@
 <div class="container">
   <div class="row min-vh-100 d-flex justify-content-center">
     <form class="mb-5" [formGroup]="articleForm" (ngSubmit) = "onSubmit()">
-      <div class="row mb-4">
-        <div class="col-md-auto mx-auto text-center">
-          <label for="formFileMultiple" class="form-label">Multiple images input</label>
-          <input class="form-control" type="file" id="formFileMultiple" multiple />
-        </div>
-      </div>
       <div class="row mb-4 px-3">
-          <div class="card w-100">
-            Image area
+          <div class="card w-100 text-center align-items-center">
+<!--            <label for="formFileMultiple" class="form-label mt-3">Multiple images input</label>-->
+            <input type="file" multiple (change)="onFileSelect($event)"/>
           </div>
       </div>
       <div class="row">
