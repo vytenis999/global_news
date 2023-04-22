@@ -125,7 +125,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("deletearticle")]
+        [HttpDelete("deletearticle/{id}")]
         public async Task<ActionResult> DeleteArticle(int id)
         {
             await _articleRepository.DeleteArticleAsync(id);

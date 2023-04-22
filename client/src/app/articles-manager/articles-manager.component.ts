@@ -4,6 +4,7 @@ import {ICategory} from "../shared/models/category";
 import {NewsParams} from "../shared/models/newsParams";
 import {CategoryService} from "../category/category.service";
 import {ActivatedRoute} from "@angular/router";
+import {ToastService} from "../shared/components/toast/toast.service";
 
 @Component({
   selector: 'app-articles-manager',
@@ -24,7 +25,7 @@ export class ArticlesManagerComponent {
     { name: 'Oldest', value: 'dateAsc' }
   ];
 
-  constructor(private categoryService: CategoryService, private route: ActivatedRoute) {}
+  constructor(private categoryService: CategoryService, private route: ActivatedRoute,private toast: ToastService) {}
 
   ngOnInit() {
     this.getCategories();
@@ -86,5 +87,20 @@ export class ArticlesManagerComponent {
     this.searchTerm.nativeElement.value = '';
     this.newsParams = new NewsParams();
     this.getArticles();
+  }
+
+  delete(id: number){
+    this.categoryService.deleteArticle(id).subscribe({
+      next: (result) => {
+          this.toast.initiate({
+          title: `Success`,
+          content: `Deleted`,
+          type: 1,
+          }),
+          this.getArticles();
+      },
+      error: (e) => console.log(e),
+      complete: () => console.info('complete'),
+    });
   }
 }

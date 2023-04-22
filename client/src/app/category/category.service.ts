@@ -58,4 +58,8 @@ export class CategoryService {
     return this.http.post(this.baseUrl + 'articles/uploadimages', imagesAdd);
   }
 
+  deleteArticle(id: number){
+    return this.http.delete(`${this.baseUrl}articles/deletearticle/${id}`);
+  }
+
 }
