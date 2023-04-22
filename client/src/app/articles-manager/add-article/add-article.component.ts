@@ -3,7 +3,7 @@ import {IArticle, IArticleAdd} from "../../shared/models/article";
 import {ICategory} from "../../shared/models/category";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CategoryService} from "../../category/category.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastService} from "../../shared/components/toast/toast.service";
 import {FileHandle, FilesSent} from "../../shared/models/file-handle";
 import {DomSanitizer} from "@angular/platform-browser";
@@ -20,11 +20,13 @@ export class AddArticleComponent {
   submitted = false;
   id?: number;
   formattedDate: any;
-  filesSent: FilesSent;
+  filesSent: FilesSent = {
+    articlesImages: []
+  };
 
   selectedFiles: File[] = [];
 
-  constructor(private sanitizer: DomSanitizer,private newsService: CategoryService, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private toast: ToastService) {}
+  constructor(private router: Router, private sanitizer: DomSanitizer,private newsService: CategoryService, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private toast: ToastService) {}
 
   ngOnInit() {
     this.getCategories();
@@ -64,7 +66,7 @@ export class AddArticleComponent {
     if(this.articleForm.invalid){
       return
     }
-
+    this.selectedFiles = this.filesSent.articlesImages.map(fileHandle => fileHandle.file);
     console.log(this.selectedFiles);
     this.uploadImages();
 
@@ -87,6 +89,7 @@ export class AddArticleComponent {
       });
         this.articleForm.reset();
         this.submitted = false;
+        this.router.navigateByUrl('/articles-manager')
       },
       error: (e) => console.log(e),
       complete: () => console.info('complete'),
@@ -104,9 +107,13 @@ export class AddArticleComponent {
           window.URL.createObjectURL(file)
         )
       }
-
-      this.selectedFiles.push(fileHandle.file);
+      this.filesSent.articlesImages.push(fileHandle);
+      //this.selectedFiles.push(fileHandle.file);
     }
+  }
+
+  removeImage(i: number){
+    this.filesSent.articlesImages.splice(i, 1);
   }
 
   uploadImages(): void {

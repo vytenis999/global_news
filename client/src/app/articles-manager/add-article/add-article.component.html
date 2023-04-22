@@ -1,10 +1,19 @@
 <div class="container">
   <div class="row min-vh-100 d-flex justify-content-center">
     <form class="mb-5" [formGroup]="articleForm" (ngSubmit) = "onSubmit()">
-      <div class="row mb-4 px-3">
-          <div class="card w-100 text-center align-items-center">
-<!--            <label for="formFileMultiple" class="form-label mt-3">Multiple images input</label>-->
-            <input type="file" multiple (change)="onFileSelect($event)"/>
+      <div class="row card mb-4 px-3">
+          <div class="w-100 text-center align-items-center">
+            <input class="form-control my-2 w-25" type="file" multiple (change)="onFileSelect($event)"/>
+          </div>
+          <div class="mt-2">
+              <div class="row">
+                <div class="col-1 me-3" *ngFor="let file of filesSent.articlesImages; let i = index;">
+                  <div style="position:relative">
+                    <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                    <img class="mb-4" [src]="file.url" width="100px" height="100px">
+                  </div>
+                </div>
+              </div>
           </div>
       </div>
       <div class="row">
