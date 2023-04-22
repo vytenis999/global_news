@@ -9,5 +9,8 @@ namespace Core.Interfaces
         Task<Article> GetArticleByIdAsync(int id);
         Task<IReadOnlyList<Article>> GetArticlesAsync();
         Task<IReadOnlyList<ArticleCategory>> GetArticleCategoriesAsync();
+        Task<ArticleCategory> GetArticleCategoryByIdAsync(int id);
+        Task PostArticleAsync(Article article);
+        Task DeleteArticleAsync(int id);
     }
 }

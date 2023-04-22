@@ -8,3 +8,13 @@ export interface IArticle {
   galleryUrls: string[];
   articleCategory: string;
 }
+
+export interface IArticleAdd {
+  date: Date;
+  title: string;
+  description: string;
+  text: string;
+  pictureUrl: string;
+  galleryUrls: string[];
+  articleCategoryId: number;
+}

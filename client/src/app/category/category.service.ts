@@ -4,7 +4,7 @@ import { IPagination } from '../shared/models/pagination';
 import { ICategory } from '../shared/models/category';
 import { map } from 'rxjs';
 import { NewsParams } from '../shared/models/newsParams';
-import { IArticle } from '../shared/models/article';
+import { IArticle, IArticleAdd } from '../shared/models/article';
 
 @Injectable({
   providedIn: 'root',
@@ -47,6 +47,10 @@ export class CategoryService {
 
   getCategories() {
     return this.http.get<ICategory[]>(this.baseUrl + 'articles/categories');
+  }
+
+  postArticle(articleAdd: IArticleAdd){
+    return this.http.post(this.baseUrl + 'articles/addarticle', articleAdd);
   }
 
 }

@@ -19,6 +19,11 @@ namespace Infrastructure.Data
             return await _context.ArticleCategories.ToListAsync();
         }
 
+        public async Task<ArticleCategory> GetArticleCategoryByIdAsync(int id)
+        {
+            return await _context.ArticleCategories.FindAsync(id);
+        }
+
         public async Task<Article> GetArticleByIdAsync(int id)
         {
             return await _context.Articles
@@ -31,6 +36,25 @@ namespace Infrastructure.Data
             return await _context.Articles
                 .Include(p => p.ArticleCategory)
                 .ToListAsync();
+        }
+
+        public async Task PostArticleAsync(Article article)
+        {
+            if (article != null)
+            {
+                _context.Articles.Add(article);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteArticleAsync(int id)
+        {
+            var itemToRemove = await _context.Articles.FindAsync(id);
+            if (itemToRemove != null)
+            {
+                _context.Articles.Remove(itemToRemove);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

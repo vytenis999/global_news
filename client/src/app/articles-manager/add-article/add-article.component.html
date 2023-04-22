@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row min-vh-100 d-flex justify-content-center">
+    <form class="mb-5" [formGroup]="articleForm" (ngSubmit) = "onSubmit()">
+      <div class="row mb-4">
+        <div class="col-md-auto mx-auto text-center">
+          <label for="formFileMultiple" class="form-label">Multiple images input</label>
+          <input class="form-control" type="file" id="formFileMultiple" multiple />
+        </div>
+      </div>
+      <div class="row mb-4 px-3">
+          <div class="card w-100">
+            Image area
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-auto mx-auto text-center">
+          <label for="title" class="form-label">Category</label>
+          <select class="form-select" (change)="onCategorySelected($event.target.value)">
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="title" class="col-form-label">Title</label>
+          <input [ngClass]="{'is-invalid':submitted && articleForm.controls.title.errors}" formControlName="title" type="text" id="title" class="form-control">
+          <div *ngIf="submitted && articleForm.controls.title.errors" class="invalid-feedback">
+            <div *ngIf="articleForm.controls.title.errors.required">Title is required!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="description" class="col-form-label">Description</label>
+          <input [ngClass]="{'is-invalid':submitted && articleForm.controls.description.errors}" formControlName="description" type="text" id="description" class="form-control">
+          <div *ngIf="submitted && articleForm.controls.description.errors" class="invalid-feedback">
+            <div *ngIf="articleForm.controls.description.errors.required">Description is required!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="text" class="col-form-label">Text</label>
+          <textarea [ngClass]="{'is-invalid':submitted && articleForm.controls.text.errors}" formControlName="text" class="form-control" id="text" cols="30" rows="7" spellcheck="false" data-ms-editor="true"></textarea>
+          <div *ngIf="submitted && articleForm.controls.text.errors" class="invalid-feedback">
+            <div *ngIf="submitted && articleForm.controls.text.errors.required">Text is required!</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6 form-group">
+          <button class="btn btn-danger rounded-2 my-3" routerLink="..">Cancel</button>
+        </div>
+        <div class="col-6 text-end form-group">
+          <button class="btn btn-success rounded-2 my-3" type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

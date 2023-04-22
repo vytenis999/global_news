@@ -5,6 +5,8 @@ import { ArticlesManagerComponent } from './articles-manager.component';
 import {ArticlesManagerRoutingModule} from "./articles-manager-routing.module";
 import {SharedModule} from "../shared/shared.module";
 import {CategoryModule} from "../category/category.module";
+import { AddArticleComponent } from './add-article/add-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 
 
@@ -12,6 +14,8 @@ import {CategoryModule} from "../category/category.module";
   declarations: [
     AddEditArticleComponent,
     ArticlesManagerComponent,
+    AddArticleComponent,
+    EditArticleComponent,
   ],
   imports: [
     CommonModule,
