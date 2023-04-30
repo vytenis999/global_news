@@ -11,6 +11,7 @@ namespace Core.Interfaces
         Task<IReadOnlyList<ArticleCategory>> GetArticleCategoriesAsync();
         Task<ArticleCategory> GetArticleCategoryByIdAsync(int id);
         Task PostArticleAsync(Article article);
+        Task UpdateArticleAsync(Article article);
         Task DeleteArticleAsync(int id);
     }
 }

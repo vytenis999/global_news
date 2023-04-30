@@ -70,7 +70,7 @@ namespace API.Controllers
         }
 
         [HttpGet("categories")]
-        public async Task<ActionResult<IReadOnlyList<ArticleCategory>>> GetProductBrands()
+        public async Task<ActionResult<IReadOnlyList<ArticleCategory>>> GetArticleCategories()
         {
             return Ok(await _articleCategoryRepo.ListAllAsync());
         }
@@ -103,6 +103,35 @@ namespace API.Controllers
             return Ok();
         }
 
+        [HttpPut("updatearticle")]
+        public async Task<ActionResult> UpdateArticle([FromBody] ArticleToUpdateDto articleDto)
+        {
+            articleDto.GalleryUrls = articleDto.GalleryUrls.Select(url => "images/articles/" + url).ToArray();
+
+            var article = new Article
+            {
+                Id = articleDto.Id,
+                Date = articleDto.Date,
+                Title = articleDto.Title,
+                Description = articleDto.Description,
+                Text = articleDto.Text,
+                PictureUrl = "images/articles/" + articleDto.PictureUrl,
+                GalleryUrls = string.Join(' ', articleDto.GalleryUrls),
+                ArticleCategoryId = Int32.Parse(articleDto.ArticleCategoryId)
+            };
+
+            var articleCategory = await _articleRepository.GetArticleCategoryByIdAsync(Int32.Parse(articleDto.ArticleCategoryId));
+            if (articleCategory == null)
+            {
+                return BadRequest($"Article category with id {articleDto.ArticleCategoryId} does not exist.");
+            }
+            article.ArticleCategory = articleCategory;
+
+            await _articleRepository.UpdateArticleAsync(article);
+
+            return Ok();
+        }
+
         [HttpPost("uploadimages")]
         public async Task<IActionResult> UploadImages(IFormFileCollection files)
         {
@@ -123,6 +152,20 @@ namespace API.Controllers
                 result.Add(fileName);
             }
             return Ok(result);
+        }
+
+        [HttpDelete("deleteimages")]
+        public IActionResult DeleteImages(List<string> fileNames)
+        {
+            foreach (var fileName in fileNames)
+            {
+                var filePath = Path.Combine(uploadPath, fileName);
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Delete(filePath);
+                }
+            }
+            return Ok();
         }
 
         [HttpDelete("deletearticle/{id}")]

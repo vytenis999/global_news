@@ -47,6 +47,26 @@ namespace Infrastructure.Data
             }
         }
 
+        public async Task UpdateArticleAsync(Article article)
+        {
+            if (article != null)
+            {
+                var existingArticle = await _context.Articles.FindAsync(article.Id);
+                if (existingArticle != null)
+                {
+                    existingArticle.Date = article.Date;
+                    existingArticle.Title = article.Title;
+                    existingArticle.Description = article.Description;
+                    existingArticle.Text = article.Text;
+                    existingArticle.PictureUrl = article.PictureUrl;
+                    existingArticle.GalleryUrls = article.GalleryUrls;
+                    existingArticle.ArticleCategory = article.ArticleCategory;
+                    existingArticle.ArticleCategoryId = article.ArticleCategoryId;
+                    await _context.SaveChangesAsync();
+                }
+            }
+        }
+
         public async Task DeleteArticleAsync(int id)
         {
             var itemToRemove = await _context.Articles.FindAsync(id);
