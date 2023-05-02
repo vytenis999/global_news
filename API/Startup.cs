@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace API
 {
@@ -33,6 +34,7 @@ namespace API
             services.AddApplicationServices();
             services.AddIdentityServices(_config);
             services.AddSwaggerDocumentation();
+            
             services.AddCors(opt => 
             {
                 opt.AddPolicy("CorsPolicy", policy =>
@@ -51,10 +53,13 @@ namespace API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
-            app.UseStaticFiles();
-
             app.UseCors("CorsPolicy");
+
+            app.UseRouting();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ServeUnknownFileTypes = true
+            });
 
             app.UseAuthentication();
             app.UseAuthorization();

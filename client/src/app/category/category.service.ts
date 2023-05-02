@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { IPagination } from '../shared/models/pagination';
 import { ICategory } from '../shared/models/category';
 import { map } from 'rxjs';
 import { NewsParams } from '../shared/models/newsParams';
 import { IArticle, IArticleAdd } from '../shared/models/article';
+import { Observable } from 'rxjs';
 import {FilesSent} from "../shared/models/file-handle";
 
 @Injectable({
@@ -60,6 +61,12 @@ export class CategoryService {
 
   deleteArticle(id: number){
     return this.http.delete(`${this.baseUrl}articles/deletearticle/${id}`);
+  }
+
+  getImages(names: string[]): Observable<any> {
+
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post<Blob>(this.baseUrl + 'articles/getimages', names, { headers });
   }
 
 }

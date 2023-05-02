@@ -1,0 +1,18 @@
+.container{
+  margin-top: 144px;
+}
+
+.btn-remove-image{
+  position: absolute;
+  cursor: pointer;
+  top: -5px;
+  right: -22px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
