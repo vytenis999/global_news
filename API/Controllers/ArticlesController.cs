@@ -155,23 +155,6 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [HttpPost("getimages")]
-        public IActionResult GetImages([FromBody] string[] names)
-        {
-            var directory = new DirectoryInfo(uploadPath);
-
-            // Filter out any invalid file extensions
-            var validFiles = directory.GetFiles()
-                .Where(file => allowedExtensions.Contains(file.Extension))
-                .Where(file => names.Contains(file.Name));
-
-            // Return a FileResult for each valid file
-            var fileResults = validFiles.Select(file =>
-                new PhysicalFileResult(file.FullName, $"image/{file.Extension.Replace(".", "")}"));
-
-            return new JsonResult(fileResults);
-        }
-
         [HttpDelete("deleteimages")]
         public async Task<IActionResult> DeleteImages(List<string> fileNames)
         {
