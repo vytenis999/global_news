@@ -155,8 +155,8 @@ namespace API.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("deleteimages")]
-        public async Task<IActionResult> DeleteImages(List<string> fileNames)
+        [HttpPost("deleteimages")]
+        public async Task<IActionResult> DeleteImages([FromBody]String[] fileNames)
         {
             foreach (var fileName in fileNames)
             {

@@ -4,7 +4,7 @@ import { IPagination } from '../shared/models/pagination';
 import { ICategory } from '../shared/models/category';
 import { map } from 'rxjs';
 import { NewsParams } from '../shared/models/newsParams';
-import { IArticle, IArticleAdd } from '../shared/models/article';
+import {IArticle, IArticleAdd, IArticleEdit} from '../shared/models/article';
 import { Observable } from 'rxjs';
 import {FilesSent} from "../shared/models/file-handle";
 
@@ -55,6 +55,10 @@ export class CategoryService {
     return this.http.post(this.baseUrl + 'articles/addarticle', articleAdd);
   }
 
+  editArticle(articleUpdate: IArticleEdit){
+    return this.http.put(this.baseUrl + 'articles/updatearticle', articleUpdate);
+  }
+
   postImages(imagesAdd: FormData){
     return this.http.post(this.baseUrl + 'articles/uploadimages', imagesAdd);
   }
@@ -67,6 +71,10 @@ export class CategoryService {
 
     const headers = { 'Content-Type': 'application/json' };
     return this.http.post<Blob>(this.baseUrl + 'articles/getimages', names, { headers });
+  }
+
+  deleteImages(fileNames: string[]){
+    return this.http.post(this.baseUrl + 'articles/deleteimages', fileNames);
   }
 
 }
