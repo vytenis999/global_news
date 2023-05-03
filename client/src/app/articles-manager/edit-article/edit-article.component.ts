@@ -109,13 +109,9 @@ export class EditArticleComponent {
 
     this.selectedFiles = this.filesSent.articlesImages.map(fileHandle => fileHandle.file);
 
-    //this.selectedFiles = this.selectedFiles.filter(file => console.log(file.name));
-
-    //this.ImagesToUpload = this.selectedFiles.filter(file => !this.imagesExist.includes(file.name));
-
     this.deleteFiles();
 
-    //this.uploadImages();
+    this.uploadImages();
 
     const newArticle: IArticleEdit = {
       id: this.id,
@@ -183,7 +179,7 @@ export class EditArticleComponent {
 
   uploadImages(): void {
     const formData = new FormData();
-    for (const file of this.ImagesToUpload) {
+    for (const file of this.selectedFiles) {
       formData.append('files', file);
     }
     this.newsService.postImages(formData).subscribe({

@@ -12,6 +12,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
@@ -76,6 +77,7 @@ namespace API.Controllers
             return Ok(await _articleCategoryRepo.ListAllAsync());
         }
 
+        [Authorize]
         [HttpPost("addarticle")]
         public async Task<ActionResult> PostArticle([FromBody] ArticleToAddDto articleDto)
         {
@@ -104,6 +106,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPut("updatearticle")]
         public async Task<ActionResult> UpdateArticle([FromBody] ArticleToUpdateDto articleDto)
         {
@@ -133,6 +136,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPost("uploadimages")]
         public async Task<IActionResult> UploadImages(IFormFileCollection files)
         {
@@ -155,6 +159,7 @@ namespace API.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost("deleteimages")]
         public async Task<IActionResult> DeleteImages([FromBody]String[] fileNames)
         {
@@ -169,6 +174,7 @@ namespace API.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete("deletearticle/{id}")]
         public async Task<ActionResult> DeleteArticle(int id)
         {
