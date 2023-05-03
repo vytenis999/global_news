@@ -81,7 +81,7 @@
         <td>{{ item.articleCategory}}</td>
         <td>{{ item.date | date }}</td>
         <td>
-          <a class="btn btn-success me-3" routerLink="/category/{{item.id}}" target="_blank"><i class="fa fa-search"></i></a>
+          <a class="btn btn-success me-3" routerLink="/category/{{item.id}}" target="_blank"><i class="fa fa-eye"></i></a>
           <button class="btn btn-warning me-3" routerLink="/articles-manager/edit-article" [queryParams]="{articleId: item.id }"><i class="fa fa-pencil"></i></button>
           <button class="btn btn-danger" (click)="delete(item.id)"><i class="fa fa-trash"></i></button>
         </td>
