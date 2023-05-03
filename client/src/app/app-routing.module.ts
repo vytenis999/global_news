@@ -7,6 +7,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {ContactComponent} from "./contact/contact.component";
 import {ArticlesManagerModule} from "./articles-manager/articles-manager.module";
+import {AuthGuard} from "./core/guards/auth.guard";
 
 const routes: Routes = [
   { path: '', component: HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'articles-manager',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./articles-manager/articles-manager.module').then((mod) => mod.ArticlesManagerModule),
   },
