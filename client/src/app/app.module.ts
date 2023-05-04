@@ -14,6 +14,7 @@ import {CategoryModule} from "./category/category.module";
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import  {  FormsModule}  from  '@angular/forms';
+import {TokenInterceptor} from "./core/interceptors/token.interceptor";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import  {  FormsModule}  from  '@angular/forms';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   exports: [],
