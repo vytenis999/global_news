@@ -70,9 +70,8 @@ export class EditArticleComponent {
           this.articleForm.controls['date'].setValue(new Date());
           this.articleForm.controls['articleCategory'].setValue(3)
           this.imagesExist = article?.galleryUrls;
-          //this.selectedOption = this.article?.articleCategory;
-          this.selectedOption = 3;
-          //this.uploadFilesFromStrings(this.myArray)
+          const selectedIndex = this.categories.findIndex(c => c.name === article?.articleCategory);
+          this.selectedOption = selectedIndex;
           this.downloadImages(article);
         },
         error: (e) => console.log(e),
